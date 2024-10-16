@@ -8,6 +8,7 @@ class tabla_hash:
         else:
             self.__M = int(N / 0.7)
         self.__lista = np.ndarray(self.__M,dtype=object)
+        self.__lista.fill(None) 
 
     def primo(self,x):
         for i in range(2,x):
@@ -26,23 +27,23 @@ class tabla_hash:
             direccion = (direccion+1) % self.__M
         if cont != self.__M:
             self.__lista[direccion] = clave
-            print(self.__lista[direccion])
-            print(f"Comparaciones que ocupó: {cont}")
+            print(f"{self.__lista[direccion]} Comparaciones que ocupó: {cont}")
         else:
             print("Tabla llena")
 
     def buscar(self, clave):
         print("Buscando")
-        direccion = self.hash(clave) 
-        cont = 1 
+        direccion = self.hash(clave)
+        cont = 1
         while self.__lista[direccion] is not None and cont <= self.__M:
             if self.__lista[direccion] == clave:
                 print(f"Clave {clave} encontrada en la posición {direccion} después de {cont} comparaciones")
-                return 
+                return
             else:
-                direccion = (direccion + 1) % self.__M 
+                direccion = (direccion + 1) % self.__M
                 cont += 1
         print(f"Clave {clave} no encontrada en la tabla después de {cont - 1} comparaciones.")
 
     def print(self):
-        print (self.__lista)
+        for i in range(len(self.__lista)):
+            print(f"Clave: {self.__lista[i]} ///  Direccion: {i}")
