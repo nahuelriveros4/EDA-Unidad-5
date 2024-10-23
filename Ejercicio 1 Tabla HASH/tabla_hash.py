@@ -1,7 +1,7 @@
 import numpy as np
 import random
 class tabla_hash:
-    __lista: np.array
+    __lista: np.ndarray
     def __init__(self,primoo ,N = 20):
         if primoo:
             self.__M = self.primo(int(N / 0.7)) 
